@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace InterfaceExercise
 {
@@ -6,9 +8,27 @@ namespace InterfaceExercise
     {
         static void Main(string[] args)
         {
+            var car = new Car();
+
+            var truck = new Truck();
+
+            var suv = new SUV();
+
+            var vehicles = new List<IVehicle>() { car, truck, suv };
+
+            foreach(var vehicle in vehicles)
+            {
+                vehicle.Drive();
+                vehicle.ChangeGears(true);
+                vehicle.Reverse();
+                Console.WriteLine($"EngineSize; {vehicle.EngineSize} Model: {vehicle.Model} Motto: {vehicle.Motto} Make: {vehicle.Make} SeatCount: {vehicle.SeatCount} HeasChangedGears: {vehicle.HasChangedGears}");
+                Console.WriteLine("-----------");
+            }
+
+
             //TODO Be sure to follow BEST PRACTICES when creating classes and interfaces
 
-            //Create 2 Interfaces called IVehicle & ICompany
+            //DONE Create 2 Interfaces called IVehicle & ICompany
 
             //Create 3 classes called Car , Truck , & SUV
 
